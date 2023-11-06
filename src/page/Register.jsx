@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate, } from "react-router-dom";
 import { BiShowAlt,BiHide } from "react-icons/bi";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import Lottie from "lottie-react";
+import registerAnimation from '../assets/Animation - 1699286182453.json'
 
 
 const Register = () => {
@@ -105,10 +107,13 @@ const Register = () => {
      
     };
     return (
-      <div data-aos="zoom-out-down">
+      <div className="  lg:flex max-w-screen-xl mx-auto p-10" >
+          <div className="flex-1 ">
+       <Lottie animationData={registerAnimation} loop={true} />
+      </div>
         
   
-        <div className="justify-center lg:w-1/2 md:w-3/4 my-10 mx-auto bg-[#FFFFFF] shadow-xl p-5">
+        <div className=" flex-1 justify-center lg:w-1/2 md:w-3/4 my-10 mx-auto bg-[#FFFFFF] shadow-xl p-5">
           <div className=" ">
             <h2 className="text-2xl text-center font-bold mb-10">
               {" "}
@@ -192,7 +197,7 @@ const Register = () => {
             </span>
           </p>
         </div>
-        
+      
       </div>
     );
   };

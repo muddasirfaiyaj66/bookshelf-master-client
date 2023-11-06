@@ -3,7 +3,7 @@ const Footer = () => {
 
     return (
         <div >
-            <footer className="  min-h-screen  bg-black text-neutral-content shadow-xl">
+            <footer className="    bg-black text-neutral-content shadow-xl">
  <div className="max-w-screen-xl mx-auto md:flex space-y-5 justify-between gap-10 items-center p-10   ">
  <div>
     <img src={logo} alt="" className="  " />
