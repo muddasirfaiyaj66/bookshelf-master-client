@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import Login from "../page/Login";
 
 const routes = createBrowserRouter([
     {
@@ -8,6 +9,12 @@ const routes = createBrowserRouter([
         children: [
             {
                 
+                index: true,
+                
+            },
+            {
+                path:'login',
+                element:<Login></Login>
             }
         ]
     }

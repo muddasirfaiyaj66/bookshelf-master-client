@@ -28,7 +28,7 @@ const Navbar = () => {
         </label>
       </div>
      <div className='-mt-5 flex-1'>
-        <img src={logo} className='w-[200px]' alt="" />
+        <img src={logo} className='w-[250px]' alt="" />
      </div>
       <div className="flex-none hidden lg:block">
         <div className="flex items-center gap-2">

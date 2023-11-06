@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import Footer from "./Footer";
 
 const MainLayout = ({children}) => {
-  const { user, logout } = useAuth();
+  const { user, logOut } = useAuth();
     return (
       <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -29,7 +29,7 @@ const MainLayout = ({children}) => {
                                 </li>
                                 <li>
                                     <button className="btn btn-sm  btn-ghost bg-red-500 text-white font-bold"
-                                        onClick={logout}
+                                        onClick={logOut}
                                     >Logout</button>
 
                                 </li>
