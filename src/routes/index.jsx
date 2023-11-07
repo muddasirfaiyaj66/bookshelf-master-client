@@ -5,6 +5,8 @@ import Register from "../page/Register";
 import Home from "../page/Home";
 import AddBooks from "../page/AddBooks";
 import SeeCategoryData from "../page/SeeCategoryData";
+import AllBooks from "../page/AllBooks";
+import DetailsBook from "../page/DetailsBook";
 
 const routes = createBrowserRouter([
   {
@@ -16,11 +18,22 @@ const routes = createBrowserRouter([
         element:<Home></Home>
       },
       {
-        path:'/add-book',
+        path:'add-book',
         element:<AddBooks></AddBooks>
       },{
-        path:'/category-books/:category_name',
+        path:'category-books/:category_name',
         element:<SeeCategoryData></SeeCategoryData>
+      },
+      {
+        path:'all-book',
+        element: <AllBooks></AllBooks>
+      },
+      {
+        path:'details-book/:id',
+        element:<DetailsBook></DetailsBook>
+      }, {
+        path:'edit-book/:id',
+        element:
       }
     ],
   },

@@ -1,12 +1,11 @@
+
 import { Rating } from "@mui/material";
 import { Link } from "react-router-dom";
-
-
-const CategoryDataCard = ({cardData}) => {
-  const {name,author_name,rating,price,image,quantity,_id}=cardData;
+const AllBooksCard = ({book}) => {
+    const {name,author_name,rating,price,image,quantity,category_name,_id}=book;
     return (
-        
-        <div className="relative flex flex-col text-gray-700  p-5 md:p-10 bg-white shadow-md  rounded-xl bg-clip-border">
+        <div>
+                   <div className="relative flex flex-col text-gray-700 h-[700px] p-5 md:p-10 bg-white shadow-md  rounded-xl bg-clip-border">
 <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white  rounded-xl bg-clip-border">
 <div className="text-center flex justify-center items-center">
 <img
@@ -23,6 +22,9 @@ const CategoryDataCard = ({cardData}) => {
   </p>
   <p className="block font-sans text-base antialiased  leading-relaxed text-blue-gray-900 font-bold">
    Author: {author_name}
+  </p>
+  <p className="block font-sans text-base antialiased  leading-relaxed text-blue-gray-900 font-bold">
+   Category: {category_name}
   </p>
  </div>
   <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
@@ -52,8 +54,8 @@ const CategoryDataCard = ({cardData}) => {
 
 </div>
 </div>
-   
+        </div>
     );
 };
 
-export default CategoryDataCard;
+export default AllBooksCard;
