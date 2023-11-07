@@ -3,6 +3,8 @@ import BooksCategoryCard from "../components/BooksCategoryCard";
 import useAxios from "../hooks/useAxios";
 
 
+
+
 const Home = () => {
    const axios = useAxios();
    const {
@@ -22,6 +24,7 @@ const Home = () => {
           <div className="mb-10 ">
             <img src="https://i.ibb.co/KVPvNwq/5467439-1733-1.jpg" alt="" />
           </div>
+         
           <div className="mb-10 ">
             <img src="https://i.ibb.co/3sGqxhb/open-book-grass-1.jpg" alt="" className="w-full content-cover"/>
           </div>
