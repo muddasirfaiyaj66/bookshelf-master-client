@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const BooksCategoryCard = ({categoryData }) => {
@@ -10,7 +11,8 @@ const BooksCategoryCard = ({categoryData }) => {
     <h2 className="card-title font-bold">{category_name}</h2>
     {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
     <div className="card-actions justify-end">
-      <button className="btn w-full  bg-[#F47025] hover:bg-[#0CAFCD] text-white">See Details</button>
+      <Link className="btn w-full  bg-[#F47025] hover:bg-[#0CAFCD] text-white" to={`/category-books/${category_name}`} ><button >See All </button></Link>
+      
     </div>
   </div>
 </div>
