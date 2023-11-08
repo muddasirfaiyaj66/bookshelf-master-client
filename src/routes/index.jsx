@@ -10,11 +10,13 @@ import DetailsBook from "../page/DetailsBook";
 import EditBook from "../page/EditBook";
 import BorrowedBooks from "../page/BorrowedBooks";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../page/ErrorPage";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
