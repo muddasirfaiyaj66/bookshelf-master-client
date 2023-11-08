@@ -118,7 +118,9 @@ const DetailsBook = () => {
 
   return (
     <div>
-      
+      <div>
+        <img src='https://i.ibb.co/CWz8mYZ/16242395-5653934.jpg'></img>
+      </div>
       <section className="overflow-hidden p-5 md:P-10 bg-white py-11 font-poppins ">
         <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
           <div className="flex flex-wrap -mx-4">
