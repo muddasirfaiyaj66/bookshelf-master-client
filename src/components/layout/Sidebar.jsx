@@ -15,30 +15,29 @@ const Sidebar = () => {
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/add-book"
             className={({ isActive }) =>
               isActive ? 'btn bg-[#F47025] text-white hover:text-black btn-md' : 'btn btn-ghost btn-md'
             }
           >
-            About
+            Add Book
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/all-book"
             className={({ isActive }) =>
               isActive ? 'btn bg-[#F47025] text-white hover:text-black btn-md' : 'btn btn-ghost btn-md'
             }
           >
-            Contact
+            All Book
           </NavLink>
           <NavLink
-            to="/services"
+            to="/borrowed-books"
             className={({ isActive }) =>
               isActive ? 'btn bg-[#F47025] text-white hover:text-black btn-md' : 'btn btn-ghost btn-md'
             }
           >
-            Services
+            Borrowed Books
           </NavLink>
-      
                    
     </div>
   );

@@ -5,43 +5,53 @@ import Sidebar from "./Sidebar";
 import useAuth from "../../hooks/useAuth";
 import Footer from "./Footer";
 
-const MainLayout = ({children}) => {
+const MainLayout = ({ children }) => {
   const { user, logOut } = useAuth();
-    return (
-      <div className="drawer">
+  return (
+    <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
         <div className="w-full navbar bg-base-200">
           <Navbar />
-         <div className="mr-5">
-         {
-                        user?.email ? <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img src={user.photoURL? user.photoURL : 'nouser.png'} alt={user.displayName} />
-                                </div>
-                            </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                <li>
-                                    <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
-
-                                </li>
-                                <li>
-                                    <button className="btn btn-sm  btn-ghost bg-red-500 text-white font-bold"
-                                        onClick={logOut}
-                                    >Logout</button>
-
-                                </li>
-                            </ul>
-                        </div>
-                            :
-                            <Link to='/login'>
-                                <button className="btn btn-sm  btn-ghost hover:bg-[#F47025] px-8 bg-black text-white font-bold">Login</button>
-                            </Link>
-                    }
-         </div>
-
+          <div className="mr-5">
+            {user?.email ? (
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                      src={user.photoURL ? user.photoURL : "nouser.png"}
+                      alt={user.displayName}
+                    />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <button className="btn btn-sm  btn-ghost">
+                      {user.displayName}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="btn btn-sm  btn-ghost bg-red-500 text-white font-bold"
+                      onClick={logOut}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="btn btn-sm  btn-ghost hover:bg-[#F47025] px-8 bg-black text-white font-bold">
+                  Login
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
         {/* Page content here */}
         {children}
@@ -58,9 +68,8 @@ const MainLayout = ({children}) => {
           <Sidebar />
         </div>
       </div>
-     
     </div>
-    );
+  );
 };
 
 export default MainLayout;

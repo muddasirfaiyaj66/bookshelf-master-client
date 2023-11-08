@@ -8,6 +8,8 @@ import SeeCategoryData from "../page/SeeCategoryData";
 import AllBooks from "../page/AllBooks";
 import DetailsBook from "../page/DetailsBook";
 import EditBook from "../page/EditBook";
+import BorrowedBooks from "../page/BorrowedBooks";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -20,24 +22,39 @@ const routes = createBrowserRouter([
       },
       {
         path:'add-book',
-        element:<AddBooks></AddBooks>
+        element:  <PrivateRoute>
+          <AddBooks></AddBooks>
+        </PrivateRoute>
       },{
         path:'category-books/:category_name',
-        element:<SeeCategoryData></SeeCategoryData>
+        element:<PrivateRoute>
+          <SeeCategoryData></SeeCategoryData>
+        </PrivateRoute>
       },
       {
         path:'all-book',
-        element: <AllBooks></AllBooks>
+        element: <PrivateRoute>
+          <AllBooks></AllBooks>
+        </PrivateRoute>
       },
       {
         path:'details-book/:id',
-        element:<DetailsBook></DetailsBook>
+        element:<PrivateRoute>
+          <DetailsBook></DetailsBook>
+        </PrivateRoute>
       }, 
       {
         path:'edit-book/:id',
-        element:<EditBook></EditBook>,
+        element:<PrivateRoute>
+          <EditBook></EditBook>
+        </PrivateRoute>,
         loader:({params})=> 
-        fetch(`http://localhost:5000/api/v1/all-book/${params.id}`)
+        fetch(`https://bookshelf-master-server.vercel.app/api/v1/all-book/${params.id}`)
+      },{
+        path:'borrowed-books',
+        element:<PrivateRoute>
+          <BorrowedBooks></BorrowedBooks>
+        </PrivateRoute>
       }
     ],
   },

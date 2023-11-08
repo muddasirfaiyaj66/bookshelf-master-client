@@ -58,7 +58,7 @@ const Navbar = () => {
             All Book
           </NavLink>
           <NavLink
-            to="/borrowed"
+            to="/borrowed-books"
             className={({ isActive }) =>
               isActive ? 'btn bg-[#F47025] text-white hover:text-black btn-md' : 'btn btn-ghost btn-md'
             }
