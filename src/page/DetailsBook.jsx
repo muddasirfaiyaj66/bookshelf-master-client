@@ -1,15 +1,19 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { Rating } from "@mui/material";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import Swal from "sweetalert2";
 const DetailsBook = () => {
     const {id}= useParams();
+    const location = useLocation();
+  const navigate = useNavigate();
     const axios = useAxios();
     const {
         data,
         error,
         isLoading,
+        refetch
     
        }= useQuery({
         queryKey: ['Book-details'],
@@ -18,7 +22,33 @@ const DetailsBook = () => {
         }
        });
        const {name,author_name,rating,description,price,image,quantity,category_name,_id}= data?.data || {};
+       const handleDelete = ()=>{
+
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axios.delete(`/all-book/${_id}`)
+        .then(res=>{
+          if(res?.data?.deletedCount >0){
+            Swal.fire(`${name}`, "has been Deleted", "success");
+            refetch();
+            // navigate(location?.state ? location.state : "/");
+            navigate(`/category-books/${category_name}`)
+          }
+        })
+            
+          }
+        });
+        
        
+       }
     return (
         <div>
           
@@ -86,11 +116,11 @@ const DetailsBook = () => {
                     </Link>
                   </div>
                   <div className="w-full  mb-4 lg:mb-0 ">
-                    <Link to={`/editdata/${_id}`}>
-                      <button className="flex items-center justify-center w-full btn-md p-4 text-red-500 border border-red-500 rounded-md dark:text-gray-200 dark:border-red-600 hover:bg-red-600 hover:border-red-600 hover:text-gray-100 dark:bg-red-600 dark:hover:bg-red-700 dark:hover:border-red-700 dark:hover:text-gray-300">
+                   
+                      <button onClick={handleDelete} className="flex items-center justify-center w-full btn-md p-4 text-red-500 border border-red-500 rounded-md dark:text-gray-200 dark:border-red-600 hover:bg-red-600 hover:border-red-600 hover:text-gray-100 dark:bg-red-600 dark:hover:bg-red-700 dark:hover:border-red-700 dark:hover:text-gray-300">
                         Delete
                       </button>
-                    </Link>
+                    
                   </div>
                 </div>
                 

@@ -19,7 +19,7 @@ const SeeCategoryData = () => {
           return await axios.get(`/all-book?category_name=${encodedCategory}`);
         }
        });
-        
+        console.log(categories);
     return (
         
 
