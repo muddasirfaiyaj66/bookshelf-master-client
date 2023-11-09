@@ -51,7 +51,10 @@ const routes = createBrowserRouter([
           <EditBook></EditBook>
         </PrivateRoute>,
         loader:({params})=> 
-        fetch(`https://bookshelf-master-server.vercel.app/api/v1/all-book/${params.id}`)
+        fetch(` http://localhost:5000/api/v1/all-book/${params.id}`)
+
+       
+        // https://bookshelf-master-server.vercel.app/api/v1
       },{
         path:'borrowed-books',
         element:<PrivateRoute>

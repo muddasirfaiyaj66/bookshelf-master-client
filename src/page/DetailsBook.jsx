@@ -5,6 +5,7 @@ import { Rating } from "@mui/material";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from "react";
 
 const DetailsBook = () => {
   const { user } = useAuth();
@@ -13,12 +14,15 @@ const DetailsBook = () => {
 
   const navigate = useNavigate();
   const axios = useAxios();
+  const [bookID, setBookID] = useState(null);
+  const [checkResult, setCheckResult] = useState([]);
   const { data, error, isLoading, refetch } = useQuery({
     queryKey: ["Book-details"],
     queryFn: async () => {
       return await axios.get(`/all-book/${id}`);
     },
   });
+
   const {
     name,
     author_name,
@@ -52,23 +56,61 @@ const DetailsBook = () => {
       }
     });
   };
- console.log(quantity);
+
+  const fetchBorrowedBooks = async () => {
+    refetch()
+    const response = await axios.get(`/borrowed-book?email=${user?.email}`);
+    setCheckResult(response.data.result);
+    
+    
+  };
+
+  useEffect(() => {
+    fetchBorrowedBooks();
+    checkResult.map((data) => setBookID(data.bookId));
+  }, [refetch()]);
+
   const handleAddBorrowedBook = (event) => {
     event.preventDefault();
-
+    refetch()
     
 
+    console.log(quantity);
     const form = event.target;
     const return_date = form.return_date.value;
     const email = user?.email;
-    
+    console.log(bookID, _id);
 
-    if (quantity > 0 ) {
-      const borrowedCount = 1;
-      const remaining = quantity - borrowedCount;
+    if (quantity <= 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${name} is out of stock`,
+      });
+      const modal = document.getElementById("my_modal_5");
+      if (modal) {
+        modal.close();
+      }
+
+      return;
+    } else if (bookID === _id) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `User has already borrowed ${name} this book`,
+      });
+      const modal = document.getElementById("my_modal_5");
+      if (modal) {
+        modal.close();
+      }
+
+      return;
+    } else {
+      const remaining = quantity - 1;
+      let borrowedCount = 1;
       const updateQuantity = { quantity: remaining };
-
-      axios.put(`/all-book/${_id}`, updateQuantity);
+      axios.put(`/all-book/${_id}`, { ...updateQuantity });
+      console.log(remaining);
 
       const borrowedBookData = {
         name,
@@ -78,48 +120,37 @@ const DetailsBook = () => {
         price,
         description,
         image,
-        quantity,
+        quantity: remaining,
         userEmail: email,
         return_date,
         borrowedCount,
         bookId: _id,
       };
 
-      axios.post("/borrowed-book", borrowedBookData)
-      .then((res) => {
+      axios.post("/borrowed-book", borrowedBookData).then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
             icon: "success",
             title: "Success",
             text: "Successfully borrowed the book",
           });
-       
+          
+          refetch();
+          
+
           const modal = document.getElementById("my_modal_5");
           if (modal) {
             modal.close();
           }
-          refetch()
-          
         }
-      })
-      .catch(error=>{
-        
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `${error.response.data.error}`,
-        });
-        refetch();
-        return;
-        
-      } )
+      });
     }
   };
 
   return (
     <div>
       <div>
-        <img src='https://i.ibb.co/CWz8mYZ/16242395-5653934.jpg'></img>
+        <img src="https://i.ibb.co/CWz8mYZ/16242395-5653934.jpg"></img>
       </div>
       <section className="overflow-hidden p-5 md:P-10 bg-white py-11 font-poppins ">
         <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
@@ -185,7 +216,7 @@ const DetailsBook = () => {
                       onClick={() =>
                         document.getElementById("my_modal_5").showModal()
                       }
-                      disabled={Response.status===400}
+                      disabled={Response.status === 400}
                     >
                       {" "}
                       Borrow
