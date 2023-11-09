@@ -1,4 +1,4 @@
-import {  NavLink } from 'react-router-dom';
+import {  Link, NavLink } from 'react-router-dom';
 // import useAuth from '../../hooks/useAuth';
 import logo from '../../assets/logo/LogoLight.png'
 import dark from '../../assets/logo/logoDark.png'
@@ -28,8 +28,10 @@ const Navbar = () => {
           </svg>
         </label>
       </div>
+      
      <div className='-mt-5 flex-1 '>
-        <img src={logo}  className='w-[250px] ' alt="" />
+        <Link to='/' >
+        <img src={logo}  className='w-[250px] ' alt="" /></Link>
      </div>
       <div className="flex-none hidden lg:block">
         <div className="flex items-center gap-2">
