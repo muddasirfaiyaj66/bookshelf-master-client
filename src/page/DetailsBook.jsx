@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Rating } from "@mui/material";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { GiRead} from "react-icons/gi";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
@@ -200,6 +201,19 @@ const DetailsBook = () => {
                       {price}
                     </span>
                   </p>
+                  <div>
+                    <Link to={`/read/${_id}`}>
+                    <button className="btn btn-md ">
+                 
+                    <span className="flex text-3xl dark:text-white text-gray-600">
+                      <GiRead></GiRead>
+                    </span>
+                   
+                  
+                  </button></Link>
+                  
+                  </div>
+                  
 
                   <p className="max-w-md mb-8 text-gray-700 dark:text-gray-700">
                     <p className="text-2xl font-bold ">Short Description:</p>

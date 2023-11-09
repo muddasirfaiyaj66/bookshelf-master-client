@@ -11,6 +11,7 @@ import EditBook from "../page/EditBook";
 import BorrowedBooks from "../page/BorrowedBooks";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../page/ErrorPage";
+import ViewBook from "../page/ViewBook";
 
 const routes = createBrowserRouter([
   {
@@ -51,14 +52,20 @@ const routes = createBrowserRouter([
           <EditBook></EditBook>
         </PrivateRoute>,
         loader:({params})=> 
-        fetch(` http://localhost:5000/api/v1/all-book/${params.id}`)
+        fetch(` https://bookshelf-master-server.vercel.app/api/v1/all-book/${params.id}`)
 
        
-        // https://bookshelf-master-server.vercel.app/api/v1
+        // 
       },{
         path:'borrowed-books',
         element:<PrivateRoute>
           <BorrowedBooks></BorrowedBooks>
+        </PrivateRoute>
+      },
+      {
+        path:'read/:id',
+        element:<PrivateRoute>
+          <ViewBook></ViewBook>
         </PrivateRoute>
       }
     ],

@@ -1,15 +1,22 @@
-import MainLayout from "../components/layout/MainLayout";
-
-
-
-
+import { Link } from "react-router-dom";
+import { GiReturnArrow } from "react-icons/gi";
 
 const ErrorPage = () => {
     return (
         <div>
- <MainLayout></MainLayout>
+ <div >
+  <div className="text-left">
+  <Link to='/'>
+    <button className="btn btn-md  ">
+    <GiReturnArrow className="text-4xl"></GiReturnArrow>
+    Go Back
+    </button>
+  </Link>
+ </div>
 <div className="grid h-screen px-4 bg-white place-content-center">
-  <div className="text-center">
+
+
+ 
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1024 768"

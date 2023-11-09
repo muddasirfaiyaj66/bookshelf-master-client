@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
-import { AiFillEye,AiOutlineEdit,AiTwotoneDelete } from "react-icons/ai";
+import { AiFillEye} from "react-icons/ai";
+import { GiReturnArrow ,GiRead} from "react-icons/gi";
 import useAxios from "../hooks/useAxios";
+import { Link } from "react-router-dom";
 
 const BorrowedBooksCard = ({data, refetch}) => {
     const axios = useAxios();
@@ -24,7 +26,7 @@ const BorrowedBooksCard = ({data, refetch}) => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, Return it!'
           }).then((result) => {
             if (result.isConfirmed) {
             
@@ -33,8 +35,8 @@ const BorrowedBooksCard = ({data, refetch}) => {
             .then(data => {
                 if(data?.data?.deletedCount > 0){
                 Swal.fire(
-                'Deleted!',
-                'Your post has been deleted.',
+                'success',
+                `Your ${name} book has been returned.`,
                 'success'
               )
               const update = quantity + 1;
@@ -69,10 +71,20 @@ const BorrowedBooksCard = ({data, refetch}) => {
     
                 
     
-    {/* <Link to={`/editpost/${_id}`}>  */}
-    {/* <div className="w-[40px] h-[40px] btn flex justify-center items-center rounded-md bg-[#3C393B]"><span className="text-xl text-[white]"><AiOutlineEdit></AiOutlineEdit></span></div></Link> */}
+        <div>
+                    <Link to={`/read/${bookId}`}>
+                    <button className="btn btn-md ">
+                 
+                    <span className="flex text-3xl dark:text-white text-gray-600">
+                      <GiRead></GiRead>
+                    </span>
+                   
+                  
+                  </button></Link>
+                  
+                  </div>
     
-    <div onClick={()=> handleDelete(_id)} className="w-[40px] h-[40px] btn flex justify-center items-center rounded-md bg-[#EA4744]"><span className="text-xl text-[white]"><AiTwotoneDelete></AiTwotoneDelete></span></div>
+    <div onClick={()=> handleDelete(_id)} className="w-[40px] h-[40px] btn flex justify-center items-center rounded-md bg-[#EA4744]"><span className="text-xl text-[white]"><GiReturnArrow></GiReturnArrow></span></div>
     
     </div>
     

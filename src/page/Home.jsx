@@ -25,9 +25,7 @@ const Home = () => {
             <img src="https://i.ibb.co/KVPvNwq/5467439-1733-1.jpg" alt="" />
           </div>
          
-          <div className="mb-10 ">
-            <img src="https://i.ibb.co/3sGqxhb/open-book-grass-1.jpg" alt="" className="w-full content-cover"/>
-          </div>
+          
 
           <div className="mb-10 max-w-screen-xl mx-auto p-5 ">
             <h2 className=" text-5xl text-center font-bold my-8 "> Book Categories</h2>
@@ -38,6 +36,12 @@ const Home = () => {
                
             </div>
           </div>
+          <div className="mb-10 ">
+            <img src="https://i.ibb.co/3sGqxhb/open-book-grass-1.jpg" alt="" className="w-full content-cover"/>
+          </div>
+          <div>
+          <img src="https://i.ibb.co/4gv776H/4553531-4262.jpg" alt="" />
+         </div>
         </div>
     );
 };
