@@ -3,10 +3,12 @@ import {  Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/LogoLight.png'
 import dark from '../../assets/logo/logoDark.png'
 
+
 const Navbar = () => {
+const theme = localStorage.getItem('theme')
 
   return (
-    <div className=" w-full max-w-[1250px] px-[25px] mx-auto">
+    <div className="w-full max-w-[1250px] px-[25px] mx-auto">
       <div className="flex-none lg:hidden">
         <label
           htmlFor="my-drawer-3"
@@ -28,10 +30,13 @@ const Navbar = () => {
           </svg>
         </label>
       </div>
-      
+     
      <div className='-mt-5 flex-1 '>
         <Link to='/' >
-        <img src={logo}  className='w-[250px] ' alt="" /></Link>
+          {
+            theme === "dark" ?  <img src={dark}  className='w-[250px] ' alt="" /> :<img src={logo}  className='w-[250px] ' alt="" />
+          }
+        </Link>
      </div>
       <div className="flex-none hidden lg:block">
         <div className="flex items-center gap-2">

@@ -6,43 +6,44 @@ import useAuth from "../../hooks/useAuth";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { CiDark,CiLight } from "react-icons/ci";
+import useThemeToggle from "../../hooks/useThemeToggle";
 
 
 const MainLayout = ({ children }) => {
-  const [mode,setMode] = useState("light");
+  const{theme, toggleTheme} = useThemeToggle()
   const { user, logOut } = useAuth();
 
 
 
-  function changeTheme() {
-    const html = document.documentElement;
-    console.log(html);
+  // function changeTheme() {
+  //   const html = document.documentElement;
+  //   console.log(html);
     
 
-    if(mode === "light"){
-        html.classList.remove('light');
-        html.classList.add('dark');
-        setMode("dark");
-    localStorage.setItem("mode", "dark")
-    } if(mode === "dark"){
-        html.classList.remove('dark')
-        html.classList.add('light');
-        setMode("light");
-        localStorage.setItem("mode","light")
-    }
+  //   if(mode === "light"){
+  //       html.classList.remove('light');
+  //       html.classList.add('dark');
+  //       setMode("dark");
+  //   localStorage.setItem("mode", "dark")
+  //   } if(mode === "dark"){
+  //       html.classList.remove('dark')
+  //       html.classList.add('light');
+  //       setMode("light");
+  //       localStorage.setItem("mode","light")
+  //   }
     
-  }
+  // }
 
  
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    const currentMode = localStorage.getItem("mode") || "light"
-    document.documentElement.classList.add(currentMode)
-    setMode(currentMode)
+  //   const currentMode = localStorage.getItem("mode") || "light"
+  //   document.documentElement.classList.add(currentMode)
+  //   setMode(currentMode)
 
       
     
-  }, [])
+  // }, [])
 
   return (
     <div className="drawer">
@@ -52,8 +53,8 @@ const MainLayout = ({ children }) => {
         <div className="w-full navbar bg-base-200">
           <Navbar />
           <div className="mr-3">
-            <button className="btn btn-md" onClick={changeTheme}>
-            <span className="text-xl">{mode === "light" ? <CiDark></CiDark> : mode==="dark"? <CiLight></CiLight> : ''}</span>
+            <button className="btn btn-md" onClick={toggleTheme}>
+            <span className="text-xl">{theme === "light" ? <CiDark></CiDark> : theme==="dark"? <CiLight></CiLight> : ''}</span>
             </button>
           </div>
           <div className="mr-5">
