@@ -28,8 +28,3 @@ Welcome to the documentation for the BookShelf  Master! This document outlines t
 - Implement a token refresh mechanism to allow users to obtain a new JWT token without needing to re-enter their credentials. This can help maintain user sessions and security.
 
 
-## Admin
-email: admin@gmail.com
-pass: admin1234@#A
-
-
