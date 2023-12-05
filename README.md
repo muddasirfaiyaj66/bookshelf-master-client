@@ -2,13 +2,11 @@
 ## BooKShelf Master Documentation
 
 ## 
-Client site Code Link:https://github.com/Porgramming-Hero-web-course/b8a11-client-side-muddasirfaiyaj66
 
-Server Site Code Link: https://github.com/Porgramming-Hero-web-course/b8a11-server-side-muddasirfaiyaj66
 
 Client live link: https://bookshelf-master.web.app/
 
-Server Live Link :https://bookshelf-master-server.vercel.app/
+
 
 ## 🚀 Introduction
 Welcome to the documentation for the BookShelf  Master! This document outlines the key features and functionality of the website.
